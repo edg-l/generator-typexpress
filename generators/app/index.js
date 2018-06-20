@@ -46,7 +46,7 @@ module.exports = class extends Generator {
       },
       {
         type: 'confirm',
-        name: 'vscode_launchjson',
+        name: 'vscodeLaunchJson',
         message: 'Add vscode files?',
         default: false
       }
@@ -82,9 +82,9 @@ module.exports = class extends Generator {
       );
     }
 
-    if (this.props.vscode_launchjson) {
+    if (this.props.vscodeLaunchJson) {
       this.fs.copyTpl(
-        this.templatePath('vscode/launch.json'),
+        this.templatePath('editors/vscode/launch.json'),
         this.destinationPath('.vscode/launch.json'),
         { props: this.props }
       );

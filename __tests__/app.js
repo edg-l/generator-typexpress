@@ -9,7 +9,8 @@ describe('generator-typexpress:app', () => {
       name: 'testapp',
       engine: 'pug',
       css: 'css',
-      gitignore: true
+      gitignore: true,
+      vscodeLaunchJson: true
     });
   });
 
@@ -19,7 +20,8 @@ describe('generator-typexpress:app', () => {
       'views/layout.pug',
       'src/routes/index.ts',
       'src/bin/www.ts',
-      'public/css/style.css'
+      'public/css/style.css',
+      '.vscode/launch.json'
     ]);
   });
 });
