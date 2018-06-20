@@ -43,6 +43,12 @@ module.exports = class extends Generator {
         name: 'gitignore',
         message: 'Add .gitignore ?',
         default: true
+      },
+      {
+        type: 'confirm',
+        name: 'vscode_launchjson',
+        message: 'Add vscode files?',
+        default: false
       }
     ];
 
@@ -73,6 +79,14 @@ module.exports = class extends Generator {
       this.fs.copy(
         this.templatePath('gitignore.txt'),
         this.destinationPath('.gitignore')
+      );
+    }
+
+    if (this.props.vscode_launchjson) {
+      this.fs.copyTpl(
+        this.templatePath('vscode/launch.json'),
+        this.destinationPath('.vscode/launch.json'),
+        { props: this.props }
       );
     }
 
