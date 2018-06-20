@@ -2,7 +2,7 @@
   "name": "generator-typexpress",
   "version": "0.2.2",
   "description": "Yeoman generator to create an express application with typescript.",
-  "homepage": "",
+  "homepage": "https://github.com/Ryozuki/generator-typexpress",
   "author": {
     "name": "Edgar Luque",
     "email": "edgar@ryobyte.com",
