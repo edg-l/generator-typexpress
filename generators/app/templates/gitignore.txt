@@ -1,3 +1,7 @@
+<% if (props.css != "css") { %>
+public/css/*.css
+<% } %>
+
 # Logs
 logs
 *.log
