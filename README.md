@@ -34,5 +34,5 @@ MIT © [Ryozuki]()
 [travis-url]: https://travis-ci.org/Ryozuki/generator-typexpress
 [daviddm-image]: https://david-dm.org/Ryozuki/generator-typexpress.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/Ryozuki/generator-typexpress
-[coveralls-image]: https://coveralls.io/repos/Ryozuki/generator-typexpress/badge.svg
-[coveralls-url]: https://coveralls.io/r/Ryozuki/generator-typexpress
+[coveralls-image]: https://coveralls.io/repos/github/Ryozuki/generator-typexpress/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/Ryozuki/generator-typexpress?branch=master
