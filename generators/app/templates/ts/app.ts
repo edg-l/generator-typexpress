@@ -10,7 +10,8 @@ import path from "path";
 import indexRouter from "./routes/index";
 import usersRouter from "./routes/users";
 
-export const app: express.Express = express();
+const app: express.Express = express();
+export default app;
 
 app.set("views", path.join(__dirname, "../views"));
 app.set("view engine", "<%= props.engine %>");
