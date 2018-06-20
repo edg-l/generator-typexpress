@@ -8,11 +8,12 @@ const mkdirp = require('mkdirp');
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
+    var pjson = require('../../package.json');
     this.log(
       yosay(
         `Welcome to the unreal ${chalk.red(
-          'generator-express-typescript'
-        )} generator!\nVersion: ${process.env.npm_package_version}`
+          'generator-typexpress'
+        )} generator!\nVersion: ${pjson.version}`
       )
     );
 
@@ -20,7 +21,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'name',
-        message: 'Your project name',
+        message: 'Your project name:',
         default: this.appname,
         filter: name => name.replace(/\s+/g, '_')
       },
@@ -41,7 +42,7 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'gitignore',
-        message: 'Add .gitignore ?',
+        message: 'Add ".gitignore" file?',
         default: true
       },
       {

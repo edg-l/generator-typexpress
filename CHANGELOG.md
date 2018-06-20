@@ -1,2 +1,6 @@
+# 0.2.4
+- Bug fixes
+- Git ignore css files if using a css engine
+
 # 0.2.3
 - Added hability to generate the launch.json file for vscode.
