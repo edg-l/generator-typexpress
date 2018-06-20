@@ -83,6 +83,6 @@
       "prettier"
     ]
   },
-  "repository": "Ryozuki/generator-typexpress",
+  "repository": "https://github.com/Ryozuki/generator-typexpress",
   "license": "MIT"
 }
