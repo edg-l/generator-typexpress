@@ -1,3 +1,6 @@
+# 0.2.5
+- Add mongoose / typegoose option
+
 # 0.2.4
 - Bug fixes
 - Git ignore css files if using a css engine

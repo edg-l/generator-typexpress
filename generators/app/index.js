@@ -41,6 +41,12 @@ module.exports = class extends Generator {
       },
       {
         type: 'confirm',
+        name: 'mongoose',
+        message: 'Add mongoose?',
+        default: false
+      },
+      {
+        type: 'confirm',
         name: 'gitignore',
         message: 'Add ".gitignore" file?',
         default: true
@@ -92,6 +98,14 @@ module.exports = class extends Generator {
       );
     }
 
+    if (this.props.mongoose) {
+      this.fs.copyTpl(
+        this.templatePath('schemas/user.ts'),
+        this.destinationPath('src/schemas/user.ts'),
+        { props: this.props }
+      );
+    }
+
     this.fs.copy(
       this.templatePath(`css/style.${this.props.css}`),
       this.destinationPath(`public/css/style.${this.props.css}`)
@@ -127,6 +141,11 @@ module.exports = class extends Generator {
     }
 
     addPkg(['express', 'debug', 'http-errors', 'morgan', 'cookie-parser']);
+
+    if (this.props.mongoose) {
+      addPkg(['mongoose']);
+      deps.push('typegoose');
+    }
 
     switch (this.props.engine) {
       case 'pug': {

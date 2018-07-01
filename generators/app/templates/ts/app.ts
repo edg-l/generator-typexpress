@@ -3,6 +3,7 @@ import express, { NextFunction, Request, Response } from "express";
 import createError from "http-errors";
 import logger from "morgan";
 import path from "path";
+<% if (props.mongoose) { %>import mongoose from "mongoose";<% } %>
 <% if (props.css == "styl") { %>import stylus from "stylus";
 <% } else if (props.css == "less") { %>import lessMiddleware from "less-middleware";
 <% } else if (props.css == "sass") { %>import sassMiddleware from "node-sass-middleware";
@@ -12,6 +13,13 @@ import usersRouter from "./routes/users";
 
 const app: express.Express = express();
 export default app;
+<% if (props.mongoose) { %>
+mongoose.connect("mongodb://localhost/mynewapp", {
+  keepAlive: 120,
+  config: {
+    autoIndex: false,
+  },
+});<% } %>
 
 app.set("views", path.join(__dirname, "../views"));
 app.set("view engine", "<%= props.engine %>");
