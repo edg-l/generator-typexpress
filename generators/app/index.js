@@ -41,8 +41,14 @@ module.exports = class extends Generator {
       },
       {
         type: 'confirm',
+        name: 'session',
+        message: 'Add session (cookie) support?',
+        default: false
+      },
+      {
+        type: 'confirm',
         name: 'mongoose',
-        message: 'Add mongoose?',
+        message: 'Add mongoose support?',
         default: false
       },
       {
@@ -147,6 +153,14 @@ module.exports = class extends Generator {
       deps.push('typegoose');
     }
 
+    if (this.props.session) {
+      addPkg(['express-session']);
+    }
+
+    if (this.props.session && this.props.mongoose) {
+      addPkg(['connect-mongo']);
+    }
+
     switch (this.props.engine) {
       case 'pug': {
         addPkg(['pug']);
@@ -197,7 +211,12 @@ module.exports = class extends Generator {
       }
     }
 
+    deps.push(['typescript', 'tslint']);
     this.npmInstall(deps, { save: true });
     this.npmInstall(depsDev, { 'save-dev': true });
+  }
+
+  end() {
+    this.spawnCommand('npm', ['run', 'lint-fix']);
   }
 };

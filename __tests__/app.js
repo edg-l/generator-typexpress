@@ -30,8 +30,7 @@ describe('generator-typexpress:app-pug-files', () => {
   beforeAll(() => {
     return helpers.run(path.join(__dirname, '../generators/app')).withPrompts({
       name: 'app-pug-files',
-      engine: 'pug',
-      css: 'css'
+      engine: 'pug'
     });
   });
 
@@ -44,12 +43,24 @@ describe('generator-typexpress:app-stylus-file', () => {
   beforeAll(() => {
     return helpers.run(path.join(__dirname, '../generators/app')).withPrompts({
       name: 'app-stylus-file',
-      engine: 'pug',
       css: 'styl'
     });
   });
 
   it('creates stylus files', () => {
     assert.file(['public/css/style.styl']);
+  });
+});
+
+describe('generator-typexpress:app-schema-files', () => {
+  beforeAll(() => {
+    return helpers.run(path.join(__dirname, '../generators/app')).withPrompts({
+      name: 'app-stylus-file',
+      mongoose: 'true'
+    });
+  });
+
+  it('creates schema files', () => {
+    assert.file(['src/schemas/user.ts']);
   });
 });

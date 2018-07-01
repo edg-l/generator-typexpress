@@ -4,6 +4,8 @@ import createError from "http-errors";
 import logger from "morgan";
 import path from "path";
 <% if (props.mongoose) { %>import mongoose from "mongoose";<% } %>
+<% if (props.session) { %>import session from "express-session";<% } %>
+<% if (props.session && props.mongoose) { %>import connectMongo from "connect-mongo";<% } %>
 <% if (props.css == "styl") { %>import stylus from "stylus";
 <% } else if (props.css == "less") { %>import lessMiddleware from "less-middleware";
 <% } else if (props.css == "sass") { %>import sassMiddleware from "node-sass-middleware";
@@ -11,8 +13,11 @@ import path from "path";
 import indexRouter from "./routes/index";
 import usersRouter from "./routes/users";
 
+<% if (props.session && props.mongoose) { %>const MongoStore = connectMongo(session);<% } %>
+
 const app: express.Express = express();
 export default app;
+
 <% if (props.mongoose) { %>
 mongoose.connect("mongodb://localhost/mynewapp", {
   keepAlive: 120,
@@ -20,6 +25,26 @@ mongoose.connect("mongodb://localhost/mynewapp", {
     autoIndex: false,
   },
 });<% } %>
+
+<% if (props.session) { %>const sessOptions: any = {
+  secret: "change_me_please",
+  name: "<%= props.name %>",
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 60 * 24 * 14,
+    httpOnly: true,
+  },
+  resave: false,
+  saveUninitialized: false,
+  <% if (props.mongoose) { %>store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+  }),<% } %>
+};
+
+if (app.get("env") === "production") {
+  app.set("trust proxy", 1); // trust first proxy
+  sessOptions.cookie.secure = true; // serve secure cookies
+}
+app.use(session(sessOptions));<% } %>
 
 app.set("views", path.join(__dirname, "../views"));
 app.set("view engine", "<%= props.engine %>");

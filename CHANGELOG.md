@@ -1,5 +1,6 @@
 # 0.2.5
 - Add mongoose / typegoose option
+- Add session option (it also includes MongoStore if mongoose is enabled too)
 
 # 0.2.4
 - Bug fixes

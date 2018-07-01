@@ -1,4 +1,4 @@
-import { prop, Typegoose, ModelType, InstanceType } from "typegoose";
+import { prop, Typegoose } from "typegoose";
 
 export default class User extends Typegoose {
   @prop({ required: [true, "The name is required."], unique: true, index: true })
