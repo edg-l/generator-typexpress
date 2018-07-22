@@ -1,3 +1,6 @@
+# 0.2.6
+- Fix a critical bug where npm instalation failed.
+
 # 0.2.5
 - Add mongoose / typegoose option
 - Add session option (it also includes MongoStore if mongoose is enabled too)

@@ -211,7 +211,7 @@ module.exports = class extends Generator {
       }
     }
 
-    deps.push(['typescript', 'tslint']);
+    deps.push('typescript', 'tslint');
     this.npmInstall(deps, { save: true });
     this.npmInstall(depsDev, { 'save-dev': true });
   }
