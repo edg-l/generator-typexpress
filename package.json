@@ -1,6 +1,6 @@
 {
   "name": "generator-typexpress",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Yeoman generator to create an express application with typescript.",
   "homepage": "https://github.com/Ryozuki/generator-typexpress",
   "author": {
@@ -47,7 +47,7 @@
   "scripts": {
     "pretest": "eslint .",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "lint-staged": {
     "*.js": [

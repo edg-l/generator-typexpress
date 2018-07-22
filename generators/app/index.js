@@ -150,7 +150,7 @@ module.exports = class extends Generator {
 
     if (this.props.mongoose) {
       addPkg(['mongoose']);
-      deps.push('typegoose');
+      deps.push('typegoose', 'reflect-metadata');
     }
 
     if (this.props.session) {
@@ -217,6 +217,8 @@ module.exports = class extends Generator {
   }
 
   end() {
-    this.spawnCommand('npm', ['run', 'lint-fix']);
+    if (typeof jest === 'undefined') {
+      this.spawnCommand('npm', ['run', 'lint-fix']);
+    }
   }
 };
