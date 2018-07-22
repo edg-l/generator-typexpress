@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./dist/bin/www",
     "lint": "tslint -p tsconfig.json",
     "lint-fix": "tslint -p tsconfig.json --fix"
   }

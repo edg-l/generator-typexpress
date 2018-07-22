@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}\\dist\\bin\\www.js",
+      "program": "${workspaceFolder}/dist/bin/www.js",
       "console": "integratedTerminal",
       "env": {
         "DEBUG": "<%= props.name %>:*"
